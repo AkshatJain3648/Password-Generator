@@ -24,6 +24,18 @@ generateEl.addEventListener('click', () => {
     resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
 });
 
+resultEl.onclick = function () {
+    document.execCommand("copy");
+}
+
+resultEl.addEventListener("copy", function (event) {
+    event.preventDefault();
+    if (event.clipboardData) {
+        event.clipboardData.setData("text/plain", span.textContent);
+        console.log(event.clipboardData.getData("text"))
+    }
+});
+
 function generatePassword(lower, upper, number, symbol, length) {
     let generatedPassword = '';
     const typesCount = lower + upper + number + symbol;

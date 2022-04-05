@@ -31,8 +31,9 @@ resultEl.onclick = function () {
 resultEl.addEventListener("copy", function (event) {
     event.preventDefault();
     if (event.clipboardData) {
-        event.clipboardData.setData("text/plain", span.textContent);
+        event.clipboardData.setData("text/plain", resultEl.textContent);
         console.log(event.clipboardData.getData("text"))
+        resultEl.textContent = "Password Copied"
     }
 });
 
